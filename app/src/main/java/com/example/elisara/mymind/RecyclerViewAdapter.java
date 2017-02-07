@@ -32,6 +32,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
+    public RecyclerViewAdapter() {
+
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder holder;
@@ -98,12 +102,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
             myViewHolder.title.setText(feedItem.title);
             myViewHolder.source.setText(feedItem.source);
+            String shortDate;
             try {
-                String shortDate = dateConverter.convertStringToDate(feedItem.date);
-                myViewHolder.date.setText(shortDate);
+                if(header.getCurrentCategory().equalsIgnoreCase("top stories")){
+                    shortDate = dateConverter.convertStringToDate2(feedItem.date);
+                    myViewHolder.date.setText(shortDate);
+
+                }
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
+            try {
+                if(!header.getCurrentCategory().equalsIgnoreCase("top stories")){
+                    shortDate = dateConverter.convertStringToDate(feedItem.date);
+                    myViewHolder.date.setText(shortDate);
+
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+
 
             myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

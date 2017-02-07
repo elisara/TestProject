@@ -10,17 +10,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 /**
@@ -43,10 +42,12 @@ public class PopularFragment extends Fragment {
         header.setCurrentCategory("top stories");
         recyclerView = (RecyclerView) view.findViewById(R.id.popular_recyclerview);
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-
-
+        recyclerViewAdapter = new RecyclerViewAdapter();
         new GetNYTAPI().execute(url, API_KEY);
-
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), header, FeedList.getInstance().getFeedList());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(recyclerViewAdapter);
 
         return view;
     }
@@ -80,10 +81,8 @@ public class PopularFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            recyclerViewAdapter = new RecyclerViewAdapter(getContext(), header, FeedList.getInstance().getFeedList());
-            recyclerView.setLayoutManager(mLayoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(recyclerViewAdapter);
+            recyclerViewAdapter.notifyDataSetChanged();
+
         }
 
         public String makeConnection(String urli) throws IOException {
@@ -120,13 +119,12 @@ public class PopularFragment extends Fragment {
         }
 
         public void makeFeedList(String result) throws JSONException {
-            //dataList = new ArrayList<String>();
             FeedItem feedItem;
             JSONObject jsonObject = new JSONObject(result);
             JSONArray jsonArray = jsonObject.getJSONArray("results");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                feedItem = new FeedItem(object.getString("title"), "", "The New York Times", "", object.getString("url"), "", /**object.getString("published_date"*/ "Wed, 4 Jul 2001 12:08:56 -0700");
+                feedItem = new FeedItem(object.getString("title"), "", "The New York Times", "", object.getString("url"), "", object.getString("published_date"));
                 if (FeedList.getInstance().getFeedList() != null) {
                     if (FeedList.getInstance().getFeedList().size() == 0)
                         FeedList.getInstance().addFeedItem(feedItem);
@@ -138,7 +136,7 @@ public class PopularFragment extends Fragment {
                             }
                         }
                         if (titleFound == false) {
-                            FeedList.getInstance().getFeedList().add(0, feedItem);
+                            FeedList.getInstance().addFeedItem(feedItem);
                         }
                     }
                 }

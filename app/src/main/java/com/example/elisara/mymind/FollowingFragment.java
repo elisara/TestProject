@@ -26,24 +26,7 @@ public class FollowingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.following_layout, container, false);
         categoryList = new ArrayList<>();
-
-
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("science", true))
-            categoryList.add("science");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("auto", true))
-            categoryList.add("auto");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("entertainment", true))
-            categoryList.add("entertainment");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("environment", true))
-            categoryList.add("environment");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fashion", true))
-            categoryList.add("fashion");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("finance", true))
-            categoryList.add("finance");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("technology", true))
-            categoryList.add("technology");
-        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("travel", true))
-            categoryList.add("travel");
+        testIfFollowing();
 
         channelFeedFragment = new ChannelFeedFragment();
 
@@ -75,6 +58,7 @@ public class FollowingFragment extends Fragment {
         c[0] = Character.toUpperCase(c[0]);
         category = new String(c);
 
+        //change the category's name to match the name in the url to XML
         if(category.equalsIgnoreCase("FASHION"))
             category = "FashionandStyle";
         else if(category.equalsIgnoreCase("AUTO"))
@@ -90,5 +74,15 @@ public class FollowingFragment extends Fragment {
         catch (Exception e){
         }
 
+    }
+
+    //go trough a list of categories and check from preferences if the user
+    // follows that category, then add the followed categories to list for adapter
+    public void testIfFollowing(){
+        String[] categoryArray = getResources().getStringArray(R.array.all_categories_array);
+        for(String a : categoryArray){
+        if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(a , true))
+            categoryList.add(a);
+        }
     }
 }

@@ -21,4 +21,13 @@ public class DateConverter {
         return formattedDate;
     }
 
+    public String convertStringToDate2(String dateString) throws ParseException {
+        Locale finnish = new Locale("en", "FI");
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", finnish);
+        DateFormat targetFormat = new SimpleDateFormat("MMM d, yyyy");
+        Date date = originalFormat.parse(dateString);
+        String formattedDate = targetFormat.format(date);  // 20120821
+        return formattedDate;
+    }
+
 }

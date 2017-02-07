@@ -25,14 +25,11 @@ public class ExploreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.following_layout, container, false);
         categoryList = new ArrayList<>();
-        categoryList.add("SCIENCE");
-        categoryList.add("AUTO");
-        categoryList.add("ENTERTAINMENT");
-        categoryList.add("ENVIRONMENT");
-        categoryList.add("FASHION");
-        categoryList.add("FINANCE");
-        categoryList.add("TECHNOLOGY");
-        categoryList.add("TRAVEL");
+
+        String[] categoryArray = getResources().getStringArray(R.array.all_categories_array);
+        for(String a : categoryArray){
+            categoryList.add(a);
+        }
 
         channelFeedFragment = new ChannelFeedFragment();
 
@@ -43,7 +40,6 @@ public class ExploreFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 String category = categoryList.get(position).toLowerCase();
                 getNYTXml(category);
-
                 Bundle bundle = new Bundle();
                 bundle.putString("category", categoryList.get(position).toLowerCase());
                 channelFeedFragment.setArguments(bundle);
