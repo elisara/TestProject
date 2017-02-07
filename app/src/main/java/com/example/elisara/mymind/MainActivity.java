@@ -12,6 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.example.elisara.mymind.adapters.PagerAdapter;
+
 public class MainActivity extends AppCompatActivity{
 
     private TabLayout tabLayout;

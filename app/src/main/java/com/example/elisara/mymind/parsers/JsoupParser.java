@@ -1,4 +1,4 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.parsers;
 
 import android.os.AsyncTask;
 

@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.example.elisara.mymind.adapters.GridViewAdapter;
+import com.example.elisara.mymind.parsers.XMLParser;
+
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.helpers;
 
 /**
  *Methods to be able to reach and modify the elements in recycler views header

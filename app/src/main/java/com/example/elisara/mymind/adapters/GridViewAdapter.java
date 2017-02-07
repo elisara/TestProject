@@ -1,4 +1,4 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.elisara.mymind.R;
 
 import java.util.ArrayList;
 

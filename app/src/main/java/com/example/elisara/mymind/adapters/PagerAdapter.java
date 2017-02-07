@@ -1,8 +1,12 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.elisara.mymind.ExploreFragment;
+import com.example.elisara.mymind.FollowingFragment;
+import com.example.elisara.mymind.PopularFragment;
 
 /**
  * Adapter for swiping and clicking between fragments

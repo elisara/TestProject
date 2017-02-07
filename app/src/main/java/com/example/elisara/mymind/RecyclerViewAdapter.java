@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.elisara.mymind.helpers.DateConverter;
+import com.example.elisara.mymind.helpers.Header;
+
 import java.text.ParseException;
 import java.util.List;
 
@@ -105,17 +109,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
             myViewHolder.title.setText(feedItem.title);
             myViewHolder.source.setText(feedItem.source);
-            String shortDate;
-            try {
-                if(header.getCurrentCategory().equalsIgnoreCase("top stories")){
+            String shortDate = "";
+            if(header.getCurrentCategory().equalsIgnoreCase("top stories")) {
+                try {
                     shortDate = dateConverter.convertStringToDate2(feedItem.date);
-                    myViewHolder.date.setText(shortDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }else{
 
+                try {
+                        shortDate = dateConverter.convertStringToDate(feedItem.date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
+            myViewHolder.date.setText(shortDate);
 
             try {
                 if(!header.getCurrentCategory().equalsIgnoreCase("top stories")){
@@ -137,6 +147,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                     ArticleDialogFragment articleDialogFragment = new ArticleDialogFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("article", feedItem);
+                    if(header.getCurrentCategory().equals("top stories")){
+                        bundle.putBoolean("popular", true);
+                    }else{
+                        bundle.putBoolean("popular", false);
+                    }
                     articleDialogFragment.setArguments(bundle);
                     ((MainActivity) context).setFragment(articleDialogFragment);
                 }

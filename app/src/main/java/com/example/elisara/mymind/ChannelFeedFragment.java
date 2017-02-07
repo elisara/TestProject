@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.elisara.mymind.helpers.FeedList;
+import com.example.elisara.mymind.helpers.Header;
+
 /**
  * Feed lists by categories to a rescyclerview
  * Method to choose the correct image for the header
@@ -31,8 +34,6 @@ public class ChannelFeedFragment extends Fragment {
         View view = inflater.inflate(R.layout.channel_feed_layout, container, false);
         header = new Header();
         header.setCurrentCategory(category);
-
-        System.out.println("FEEDISSÄ LISTAN KOKO: " + FeedList.getInstance().getFeedList().size());
 
         recyclerView = (RecyclerView) view.findViewById(R.id.feed_recyclerview);
         recyclerViewAdapter = new RecyclerViewAdapter(getContext(), header, FeedList.getInstance().getFeedList());

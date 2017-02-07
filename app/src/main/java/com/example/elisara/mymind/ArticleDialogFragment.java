@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.elisara.mymind.helpers.DateConverter;
+import com.example.elisara.mymind.parsers.JsoupParser;
+
 import org.jsoup.nodes.Element;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -22,18 +26,29 @@ public class ArticleDialogFragment extends DialogFragment {
     private ArrayList<Element> paragraphList;
     private String shortDate;
     private DateConverter dateConverter;
+    private boolean fromPopular;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.article_layout, container, false);
         article = (FeedItem) getArguments().getSerializable("article");
+        fromPopular = getArguments().getBoolean("popular");
         dateConverter = new DateConverter();
 
         //modify the date type
-        try {
-           shortDate = dateConverter.convertStringToDate(article.date);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(!fromPopular) {
+            try {
+                shortDate = dateConverter.convertStringToDate(article.date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                shortDate = dateConverter.convertStringToDate2(article.date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         //get paragraphs from the article's url as html

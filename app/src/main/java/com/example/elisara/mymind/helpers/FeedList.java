@@ -1,4 +1,6 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.helpers;
+
+import com.example.elisara.mymind.FeedItem;
 
 import java.util.ArrayList;
 
