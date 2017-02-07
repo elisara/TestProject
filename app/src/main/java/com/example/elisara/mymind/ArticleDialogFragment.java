@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.elisara.mymind.helpers.DateConverter;
+import com.example.elisara.mymind.helpers.FeedItem;
 import com.example.elisara.mymind.parsers.JsoupParser;
 
 import org.jsoup.nodes.Element;

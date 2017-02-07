@@ -2,7 +2,7 @@ package com.example.elisara.mymind.parsers;
 
 import android.os.AsyncTask;
 
-import com.example.elisara.mymind.FeedItem;
+import com.example.elisara.mymind.helpers.FeedItem;
 import com.example.elisara.mymind.helpers.FeedList;
 
 import org.xmlpull.v1.XmlPullParser;

@@ -51,30 +51,23 @@ public class GridViewAdapter extends BaseAdapter {
 
         Resources res = context.getResources();
 
-        if(list.get(position).equalsIgnoreCase("SCIENCE")){
+        if(list.get(position).equalsIgnoreCase("SCIENCE"))
             drawable = res.getDrawable(R.drawable.science2);
-        }
-        else if(list.get(position).equalsIgnoreCase("AUTO")){
+        else if(list.get(position).equalsIgnoreCase("AUTO"))
             drawable = res.getDrawable(R.drawable.auto2);
-        }
-        else if(list.get(position).equalsIgnoreCase("ENTERTAINMENT")){
+        else if(list.get(position).equalsIgnoreCase("ENTERTAINMENT"))
             drawable = res.getDrawable(R.drawable.entertainment2);
-        }
-        else if(list.get(position).equalsIgnoreCase("ENVIRONMENT")){
+        else if(list.get(position).equalsIgnoreCase("ENVIRONMENT"))
             drawable = res.getDrawable(R.drawable.environment2);
-        }
-        else if(list.get(position).equalsIgnoreCase("FASHION")){
+        else if(list.get(position).equalsIgnoreCase("FASHION"))
             drawable = res.getDrawable(R.drawable.fashion2);
-        }
-        else if(list.get(position).equalsIgnoreCase("FINANCE")){
+        else if(list.get(position).equalsIgnoreCase("FINANCE"))
             drawable = res.getDrawable(R.drawable.finance2);
-        }
-        else if(list.get(position).equalsIgnoreCase("TECHNOLOGY")){
+        else if(list.get(position).equalsIgnoreCase("TECHNOLOGY"))
             drawable = res.getDrawable(R.drawable.technology2);
-        }
-        else if(list.get(position).equalsIgnoreCase("TRAVEL")){
+        else if(list.get(position).equalsIgnoreCase("TRAVEL"))
             drawable = res.getDrawable(R.drawable.travel2);
-        }
+
         relativeLayout.setBackground(drawable);
 
         return myView;

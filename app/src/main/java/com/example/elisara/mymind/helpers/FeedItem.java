@@ -1,4 +1,4 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.helpers;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class FeedItem implements Serializable {
 
-    String title, description, source, category, url, imageUrl, date;
+    public String title, description, source, category, url, imageUrl, date;
 
     public FeedItem(String title, String description, String source, String category, String url, String imageUrl, String date){
         this.title = title;

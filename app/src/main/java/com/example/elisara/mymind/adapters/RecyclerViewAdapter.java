@@ -1,4 +1,4 @@
-package com.example.elisara.mymind;
+package com.example.elisara.mymind.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,7 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.elisara.mymind.ArticleDialogFragment;
+import com.example.elisara.mymind.ChannelFeedFragment;
+import com.example.elisara.mymind.MainActivity;
+import com.example.elisara.mymind.R;
 import com.example.elisara.mymind.helpers.DateConverter;
+import com.example.elisara.mymind.helpers.FeedItem;
 import com.example.elisara.mymind.helpers.Header;
 
 import java.text.ParseException;
@@ -37,7 +42,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     public RecyclerViewAdapter() {
-
     }
 
     @Override
@@ -137,9 +141,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-
-
 
             myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

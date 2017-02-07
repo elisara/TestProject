@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.elisara.mymind.adapters.RecyclerViewAdapter;
+import com.example.elisara.mymind.helpers.FeedItem;
 import com.example.elisara.mymind.helpers.FeedList;
 import com.example.elisara.mymind.helpers.Header;
 
