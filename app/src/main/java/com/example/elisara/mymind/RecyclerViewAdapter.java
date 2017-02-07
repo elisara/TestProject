@@ -55,6 +55,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             final Resources res = context.getResources();
             headerHolder.channelName.setText(header.getCurrentCategory().toUpperCase() + " CHANNEL");
             headerHolder.headerImage.setImageDrawable(channelFeedFragment.imageByCategory(header.getCurrentCategory(), context));
+
+            if(header.getCurrentCategory().equalsIgnoreCase("top stories")){
+                headerHolder.followBtn.setVisibility(View.INVISIBLE);
+                headerHolder.followerCount.setVisibility(View.INVISIBLE);
+            }
+
             if(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(header.getCurrentCategory(), true)) {
                 Drawable drawable = res.getDrawable(R.drawable.following_bg);
                 headerHolder.followBtn.setBackground(drawable);
@@ -140,11 +146,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         public ImageView headerImage;
         public TextView channelName, followerCount, followBtn;
 
-        public HeaderHolder(View itemView) {
-            super(itemView);
-            headerImage = (ImageView) itemView.findViewById(R.id.header_image);
-            channelName = (TextView) itemView.findViewById(R.id.channel_name);
-            followBtn = (TextView) itemView.findViewById(R.id.follow_btn);
+        public HeaderHolder(View view) {
+            super(view);
+            headerImage = (ImageView) view.findViewById(R.id.header_image);
+            channelName = (TextView) view.findViewById(R.id.channel_name);
+            followBtn = (TextView) view.findViewById(R.id.follow_btn);
+            followerCount = (TextView) view.findViewById(R.id.number_of_followers);
 
         }
     }

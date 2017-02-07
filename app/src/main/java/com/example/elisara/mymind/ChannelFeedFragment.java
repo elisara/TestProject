@@ -71,6 +71,9 @@ public class ChannelFeedFragment extends Fragment {
         else if(category.toLowerCase().contains("auto")){
             drawable = res.getDrawable(R.drawable.auto2);
         }
+        else{
+            drawable = res.getDrawable(R.drawable.bg2x);
+        }
         return drawable;
 
     }

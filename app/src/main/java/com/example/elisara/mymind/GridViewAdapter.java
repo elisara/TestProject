@@ -45,7 +45,7 @@ public class GridViewAdapter extends BaseAdapter {
         relativeLayout.setLayoutParams(layoutParams);
 
         categoryName = (TextView) myView.findViewById(R.id.gridview_item_text);
-        categoryName.setText(list.get(position));
+        categoryName.setText(list.get(position).toUpperCase());
 
         Resources res = context.getResources();
 
