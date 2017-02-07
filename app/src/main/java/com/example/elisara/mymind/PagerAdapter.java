@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
- * Created by Ellu on 31.1.2017.
+ * Adapter for swiping and clicking between fragments
  */
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
@@ -23,7 +23,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         switch (position) {
             case 0:
                 FollowingFragment followingFragment = new FollowingFragment();

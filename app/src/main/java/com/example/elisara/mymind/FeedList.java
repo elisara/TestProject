@@ -3,7 +3,8 @@ package com.example.elisara.mymind;
 import java.util.ArrayList;
 
 /**
- * Created by Ellu on 1.2.2017.
+ * Singleton list
+ * Feed items are saved to this list
  */
 
 public class FeedList {

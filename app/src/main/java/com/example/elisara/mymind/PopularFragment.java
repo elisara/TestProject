@@ -19,11 +19,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 
 /**
- * Created by Ellu on 31.1.2017.
+ * Get The New York Times top stories using API
+ * Show the feed on recycler view
+ *
  */
 
 public class PopularFragment extends Fragment {
@@ -92,11 +93,8 @@ public class PopularFragment extends Fragment {
             connection = (HttpURLConnection) url.openConnection();
             if (connection.getResponseCode() == 200) {
                 connection.connect();
-
                 InputStream stream = connection.getInputStream();
-
                 reader = new BufferedReader(new InputStreamReader(stream));
-
                 StringBuffer buffer = new StringBuffer();
                 String line = "";
 
@@ -118,6 +116,7 @@ public class PopularFragment extends Fragment {
             return result;
         }
 
+        //create feed items and populating feeditemlist with them
         public void makeFeedList(String result) throws JSONException {
             FeedItem feedItem;
             JSONObject jsonObject = new JSONObject(result);

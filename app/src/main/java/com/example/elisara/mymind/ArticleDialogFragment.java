@@ -11,7 +11,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
- * Created by Ellu on 1.2.2017.
+ * Show one article
+ *
  */
 
 public class ArticleDialogFragment extends DialogFragment {
@@ -41,6 +42,14 @@ public class ArticleDialogFragment extends DialogFragment {
         }catch (Exception e){
 
         }
+        articleTextView = (TextView) view.findViewById(R.id.article_text);
+        if(paragraphList.size() > 0) {
+            for(Element p : paragraphList){
+                if(!p.text().equalsIgnoreCase("advertisement")) {
+                    articleTextView.append(p.text() + "\n\n");
+                }
+            }
+        }
 
         titleView = (TextView) view.findViewById(R.id.article_title);
         titleView.setText(article.title);
@@ -50,15 +59,6 @@ public class ArticleDialogFragment extends DialogFragment {
 
         sourceView = (TextView) view.findViewById(R.id.sourceview);
         sourceView.setText(article.source);
-
-        articleTextView = (TextView) view.findViewById(R.id.article_text);
-        if(paragraphList.size() > 0) {
-            for(Element p : paragraphList){
-                if(!p.text().equalsIgnoreCase("advertisement")) {
-                    articleTextView.append(p.text() + "\n\n");
-                }
-            }
-        }
 
         return view;
     }

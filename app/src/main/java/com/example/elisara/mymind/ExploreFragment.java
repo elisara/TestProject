@@ -11,7 +11,7 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 /**
- * Created by Ellu on 31.1.2017.
+ * Show all the categories from resources in recycler view
  */
 
 public class ExploreFragment extends Fragment {

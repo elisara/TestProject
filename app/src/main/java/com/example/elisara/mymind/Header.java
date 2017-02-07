@@ -1,7 +1,7 @@
 package com.example.elisara.mymind;
 
 /**
- * Created by Ellu on 5.2.2017.
+ *Methods to be able to reach and modify the elements in recycler views header
  */
 
 

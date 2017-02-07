@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by Ellu on 1.2.2017.
+ *Method to modify the dates to the desired form
  */
 
 public class DateConverter {

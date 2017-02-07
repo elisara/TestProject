@@ -12,7 +12,8 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 /**
- * Created by Ellu on 31.1.2017.
+ * Show the categories that the user follows on grid view
+ * Pass the category name to ChannelFeedFragment
  */
 
 public class FollowingFragment extends Fragment {

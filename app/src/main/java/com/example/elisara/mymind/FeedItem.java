@@ -3,7 +3,7 @@ package com.example.elisara.mymind;
 import java.io.Serializable;
 
 /**
- * Created by Ellu on 31.1.2017.
+ * 'Blueprint' for creating feed item objects
  */
 
 public class FeedItem implements Serializable {
@@ -21,7 +21,4 @@ public class FeedItem implements Serializable {
 
     }
 
-    public FeedItem(){
-
-    }
 }

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Ellu on 31.1.2017.
+ * Gridview adapter to show the gridviews on FollowingFragment and ExploreFragment
  */
 
 public class GridViewAdapter extends BaseAdapter {

@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Ellu on 1.2.2017.
+ *Parse category feeds from The New York Times XML
  */
 
 public class XMLParser extends AsyncTask<String, String, String>{
@@ -20,7 +20,6 @@ public class XMLParser extends AsyncTask<String, String, String>{
     private String source = "source";
     private String pubDate = "pubDate";
     private String urlString = null;
-    boolean insideItem = false;
     private XmlPullParserFactory xmlFactoryObject;
     public volatile boolean parsingComplete = true;
     private FeedItem feedItem;
@@ -60,16 +59,12 @@ public class XMLParser extends AsyncTask<String, String, String>{
 
             while (event != XmlPullParser.END_DOCUMENT) {
                 String name=myParser.getName();
-                //insideItem = false;
-
                 switch (event){
                     case XmlPullParser.START_TAG:
-
                         break;
 
                     case XmlPullParser.TEXT:
                         text = myParser.getText();
-
                         break;
 
                     case XmlPullParser.END_TAG:
@@ -83,11 +78,10 @@ public class XMLParser extends AsyncTask<String, String, String>{
                         } else if (name.equals("pubDate")) {
                             pubDate = text;
                         } else {
-                            // skip(myParser);
                         }
 
                         if(name.equals("item")){
-                            feedItem = new FeedItem(title, description, "New York Times", "category", link, link, pubDate);
+                            feedItem = new FeedItem(title, description, "The New York Times", "category", link, link, pubDate);
                             FeedList.getInstance().addFeedItem(feedItem);
                         }
 
@@ -143,8 +137,6 @@ public class XMLParser extends AsyncTask<String, String, String>{
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-
-
 
     }
 

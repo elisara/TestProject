@@ -11,11 +11,10 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Ellu on 6.2.2017.
+ * Get html elements (paragraphs in this case) from urls
  */
 
 public class JsoupParser extends AsyncTask<String, String, ArrayList<Element>>{
-
 
     protected void onPreExecute() {
         super.onPreExecute();
@@ -23,7 +22,6 @@ public class JsoupParser extends AsyncTask<String, String, ArrayList<Element>>{
 
     @Override
     protected ArrayList<Element> doInBackground(String... params) {
-
         ArrayList<Element> paragraphList = new ArrayList<>();
         try {
             String url = params[0];
@@ -40,7 +38,6 @@ public class JsoupParser extends AsyncTask<String, String, ArrayList<Element>>{
         catch (Exception e) {
 
         }
-
         return paragraphList;
     }
 

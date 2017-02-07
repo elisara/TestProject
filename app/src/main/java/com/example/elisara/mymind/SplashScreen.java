@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 /**
- * Created by Ellu on 7.2.2017.
+ * Show splash screen before going to MainActivity
  */
 
 public class SplashScreen extends Activity {

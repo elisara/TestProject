@@ -15,7 +15,7 @@ import java.text.ParseException;
 import java.util.List;
 
 /**
- * Created by Ellu on 5.2.2017.
+ *Adapter that is used in recycler views in FollowingFragment and in Popularfragment
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter {
@@ -54,17 +54,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final FeedItem feedItem = this.feedList.get(position);
         channelFeedFragment = new ChannelFeedFragment();
+
+        //make the first list item to be header
         if(holder.getItemViewType() == 0){
             final HeaderHolder headerHolder = (HeaderHolder) holder;
             final Resources res = context.getResources();
             headerHolder.channelName.setText(header.getCurrentCategory().toUpperCase() + " CHANNEL");
             headerHolder.headerImage.setImageDrawable(channelFeedFragment.imageByCategory(header.getCurrentCategory(), context));
 
+            //functionality for the following button
             if(header.getCurrentCategory().equalsIgnoreCase("top stories")){
                 headerHolder.followBtn.setVisibility(View.INVISIBLE);
                 headerHolder.followerCount.setVisibility(View.INVISIBLE);
             }
-
             if(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(header.getCurrentCategory(), true)) {
                 Drawable drawable = res.getDrawable(R.drawable.following_bg);
                 headerHolder.followBtn.setBackground(drawable);
@@ -75,7 +77,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 headerHolder.followBtn.setBackground(drawable);
                 headerHolder.followBtn.setText("Follow");
             }
-
             headerHolder.followBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,6 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                         Drawable drawable = res.getDrawable(R.drawable.follow_bg);
                         headerHolder.followBtn.setBackground(drawable);
 
+                        //save to preferences that the user doesn't follow this category
                         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(header.getCurrentCategory(), false).apply();
                     }
                     else{
@@ -91,6 +93,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                         Drawable drawable = res.getDrawable(R.drawable.following_bg);
                         headerHolder.followBtn.setBackground(drawable);
 
+                        //save to preferences that the user does follow this category
                         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(header.getCurrentCategory(), true).apply();
 
                     }
