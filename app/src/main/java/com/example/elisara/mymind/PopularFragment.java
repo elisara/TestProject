@@ -38,7 +38,7 @@ public class PopularFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private Header header;
-    RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     private String url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=";
     private final String API_KEY = "9b55d9a601e8429d8cdcfb6f8a14c4fc";

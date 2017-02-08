@@ -2,6 +2,7 @@ package com.example.elisara.mymind.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -61,12 +62,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final FeedItem feedItem = this.feedList.get(position);
+        Typeface bold = Typeface.createFromAsset(context.getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
+        Typeface neue = Typeface.createFromAsset(context.getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
         channelFeedFragment = new ChannelFeedFragment();
 
         //make the first list item to be header
         if(holder.getItemViewType() == 0){
             final HeaderHolder headerHolder = (HeaderHolder) holder;
             final Resources res = context.getResources();
+            headerHolder.channelName.setTypeface(bold);
+            headerHolder.followBtn.setTypeface(neue);
+            headerHolder.followerCount.setTypeface(neue);
+
             headerHolder.channelName.setText(header.getCurrentCategory().toUpperCase() + " CHANNEL");
             headerHolder.headerImage.setImageDrawable(channelFeedFragment.imageByCategory(header.getCurrentCategory(), context));
 
@@ -111,6 +118,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }
         else{
             MyViewHolder myViewHolder = (MyViewHolder) holder;
+            myViewHolder.title.setTypeface(bold);
+            myViewHolder.source.setTypeface(neue);
+            myViewHolder.date.setTypeface(neue);
             myViewHolder.title.setText(feedItem.title);
             myViewHolder.source.setText(feedItem.source);
             String shortDate = "";
@@ -121,7 +131,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                     e.printStackTrace();
                 }
             }else{
-
                 try {
                         shortDate = dateConverter.convertStringToDate(feedItem.date);
                 } catch (ParseException e) {

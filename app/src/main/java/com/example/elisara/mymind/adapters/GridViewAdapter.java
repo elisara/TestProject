@@ -2,6 +2,7 @@ package com.example.elisara.mymind.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View myView = convertView;
+        Typeface bold = Typeface.createFromAsset(context.getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
 
         if (myView == null) {
             myView = LayoutInflater.from(context).inflate(R.layout.gridview_item, parent, false);
@@ -48,6 +50,7 @@ public class GridViewAdapter extends BaseAdapter {
 
         categoryName = (TextView) myView.findViewById(R.id.gridview_item_text);
         categoryName.setText(list.get(position).toUpperCase());
+        categoryName.setTypeface(bold);
 
         Resources res = context.getResources();
 

@@ -1,5 +1,6 @@
 package com.example.elisara.mymind;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -35,6 +36,9 @@ public class ArticleDialogFragment extends DialogFragment {
         article = (FeedItem) getArguments().getSerializable("article");
         fromPopular = getArguments().getBoolean("popular");
         dateConverter = new DateConverter();
+        Typeface bold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
+        Typeface neue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
+
 
         //modify the date type
         if(!fromPopular) {
@@ -59,6 +63,7 @@ public class ArticleDialogFragment extends DialogFragment {
 
         }
         articleTextView = (TextView) view.findViewById(R.id.article_text);
+        articleTextView.setTypeface(neue);
         if(paragraphList.size() > 0) {
             for(Element p : paragraphList){
                 if(!p.text().equalsIgnoreCase("advertisement")) {
@@ -69,12 +74,15 @@ public class ArticleDialogFragment extends DialogFragment {
 
         titleView = (TextView) view.findViewById(R.id.article_title);
         titleView.setText(article.title);
+        titleView.setTypeface(bold);
 
         dateView = (TextView) view.findViewById(R.id.dateview);
         dateView.setText(shortDate);
+        dateView.setTypeface(neue);
 
         sourceView = (TextView) view.findViewById(R.id.sourceview);
         sourceView.setText(article.source);
+        dateView.setTypeface(neue);
 
         return view;
     }
