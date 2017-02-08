@@ -39,7 +39,6 @@ public class ArticleDialogFragment extends DialogFragment {
         Typeface bold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
         Typeface neue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
 
-
         //modify the date type
         if(!fromPopular) {
             try {
