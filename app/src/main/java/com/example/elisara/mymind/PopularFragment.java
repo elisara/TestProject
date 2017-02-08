@@ -42,6 +42,7 @@ public class PopularFragment extends Fragment {
 
     private String url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=";
     private final String API_KEY = "";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.popular_layout, container, false);

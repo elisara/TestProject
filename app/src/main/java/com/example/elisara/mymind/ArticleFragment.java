@@ -3,6 +3,7 @@ package com.example.elisara.mymind;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,12 @@ import java.util.ArrayList;
  *
  */
 
-public class ArticleDialogFragment extends DialogFragment {
+public class ArticleFragment extends Fragment {
 
     private FeedItem article;
-    private TextView articleTextView, titleView, dateView, sourceView;
+    private TextView articleTextView, titleView, dateView, categoryView, sourceView;
     private ArrayList<Element> paragraphList;
-    private String shortDate;
+    private String shortDate, category;
     private DateConverter dateConverter;
     private boolean fromPopular;
 
@@ -35,6 +36,8 @@ public class ArticleDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.article_layout, container, false);
         article = (FeedItem) getArguments().getSerializable("article");
         fromPopular = getArguments().getBoolean("popular");
+        category = getArguments().getString("category");
+
         dateConverter = new DateConverter();
         Typeface bold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
         Typeface neue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
@@ -82,6 +85,10 @@ public class ArticleDialogFragment extends DialogFragment {
         sourceView = (TextView) view.findViewById(R.id.sourceview);
         sourceView.setText(article.source);
         dateView.setTypeface(neue);
+
+        categoryView = (TextView) view.findViewById(R.id.article_category);
+        categoryView.setText(category.toUpperCase());
+        categoryView.setTypeface(neue);
 
         return view;
     }

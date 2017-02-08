@@ -33,7 +33,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View myView = convertView;
-        Typeface bold = Typeface.createFromAsset(context.getAssets(), "fonts/helvetica-bold.otf/Helvetica-Bold.otf");
+        Typeface neue = Typeface.createFromAsset(context.getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
 
         if (myView == null) {
             myView = LayoutInflater.from(context).inflate(R.layout.gridview_item, parent, false);
@@ -50,7 +50,7 @@ public class GridViewAdapter extends BaseAdapter {
 
         categoryName = (TextView) myView.findViewById(R.id.gridview_item_text);
         categoryName.setText(list.get(position).toUpperCase());
-        categoryName.setTypeface(bold);
+        categoryName.setTypeface(neue);
 
         Resources res = context.getResources();
 

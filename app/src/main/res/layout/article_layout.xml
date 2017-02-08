@@ -45,13 +45,14 @@
                 <TextView
                     android:id="@+id/sourceview"
                     android:text="source"
+                    android:textSize="12dp"
                     android:textColor="@android:color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="80"
+                android:layout_weight="75"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -64,14 +65,24 @@
                 <TextView
                     android:id="@+id/dateview"
                     android:text="date"
+                    android:textSize="12dp"
                     android:textColor="@android:color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/article_category"
+                android:text="category"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/article_text"
+            android:layout_weight="5"
+            android:layout_gravity="right"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

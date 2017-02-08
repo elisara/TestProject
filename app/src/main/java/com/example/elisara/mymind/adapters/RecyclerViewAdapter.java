@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.elisara.mymind.ArticleDialogFragment;
+import com.example.elisara.mymind.ArticleFragment;
 import com.example.elisara.mymind.ChannelFeedFragment;
 import com.example.elisara.mymind.MainActivity;
 import com.example.elisara.mymind.R;
@@ -123,47 +123,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             myViewHolder.date.setTypeface(neue);
             myViewHolder.title.setText(feedItem.title);
             myViewHolder.source.setText(feedItem.source);
-            String shortDate = "";
-            if(header.getCurrentCategory().equalsIgnoreCase("top stories")) {
-                try {
-                    shortDate = dateConverter.convertStringToDate2(feedItem.date);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }else{
-                try {
-                        shortDate = dateConverter.convertStringToDate(feedItem.date);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            myViewHolder.date.setText(shortDate);
 
             try {
-                if(!header.getCurrentCategory().equalsIgnoreCase("top stories")){
-                    shortDate = dateConverter.convertStringToDate(feedItem.date);
-                    myViewHolder.date.setText(shortDate);
-
-                }
-
+                String shortDate = dateConverter.convertStringToDate(feedItem.date);
+                myViewHolder.date.setText(shortDate);
             } catch (ParseException e) {
-                e.printStackTrace();
+                try {
+                    String shortDate = dateConverter.convertStringToDate2(feedItem.date);
+                    myViewHolder.date.setText(shortDate);
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
             }
 
             myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ArticleDialogFragment articleDialogFragment = new ArticleDialogFragment();
+                    ArticleFragment articleFragment = new ArticleFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("article", feedItem);
                     if(header.getCurrentCategory().equals("top stories")){
                         bundle.putBoolean("popular", true);
+                        bundle.putString("category", header.getCurrentCategory());
                     }else{
                         bundle.putBoolean("popular", false);
+                        bundle.putString("category", header.getCurrentCategory());
                     }
-                    articleDialogFragment.setArguments(bundle);
-                    ((MainActivity) context).setFragment(articleDialogFragment);
+                    articleFragment.setArguments(bundle);
+                    ((MainActivity) context).setFragment(articleFragment);
                 }
             });
 

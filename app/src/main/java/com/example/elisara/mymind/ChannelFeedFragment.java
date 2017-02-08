@@ -17,7 +17,7 @@ import com.example.elisara.mymind.helpers.FeedList;
 import com.example.elisara.mymind.helpers.Header;
 
 /**
- * Feed lists by categories to a rescyclerview
+ * Feed lists by categories to rescycler view
  * Method to choose the correct image for the header
  */
 
