@@ -43,18 +43,15 @@ public class ArticleFragment extends Fragment {
         Typeface neue = Typeface.createFromAsset(getActivity().getAssets(), "fonts/helvetica-neue.ttf/HelveticaNeue.ttf");
 
         //modify the date type
-        if(!fromPopular) {
+
+
+        try {
+             shortDate = dateConverter.convertStringToDate(article.date);
+        } catch (ParseException e) {
             try {
-                shortDate = dateConverter.convertStringToDate(article.date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            try {
-                shortDate = dateConverter.convertStringToDate2(article.date);
-            } catch (ParseException e) {
-                e.printStackTrace();
+                 shortDate = dateConverter.convertStringToDate2(article.date);
+            } catch (ParseException e1) {
+                e1.printStackTrace();
             }
         }
 
